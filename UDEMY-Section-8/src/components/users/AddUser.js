@@ -3,20 +3,20 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 import classes from "./AddUser.module.css";
 
-const AddUSer = (props) => {
+const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
 
   const addUserHandler = (event) => {
     event.preventDefault();
-    console.log(enteredUsername + " - " + enteredAge);
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
       return;
     }
     if (+enteredAge < 1) {
       return;
     }
-
+    // console.log(enteredUsername + " - " + enteredAge);
+    props.onUserAdded(enteredUsername, enteredAge);
     setEnteredAge("");
     setEnteredUsername("");
   };
@@ -52,4 +52,4 @@ const AddUSer = (props) => {
   );
 };
 
-export default AddUSer;
+export default AddUser;
